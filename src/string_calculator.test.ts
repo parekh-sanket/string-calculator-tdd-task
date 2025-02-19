@@ -29,6 +29,6 @@ describe("String Calculator Testing", () => {
   })
 
   it("should throw an exception when negative numbers are used", () => {
-    expect(calculator.add("-1,2")).toThrow("negatives not allowed: -1");
+    expect(() => calculator.add("-1,2")).toThrow("negatives not allowed: -1");
   });
 });
