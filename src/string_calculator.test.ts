@@ -19,4 +19,8 @@ describe("String Calculator Testing", () => {
     expect(calculator.add("1,2")).toBe(3);
     expect(calculator.add("1,2,3")).toBe(6);
   })
+
+  it("should handle newline between numbers" , ()=>{
+    expect(calculator.add("1\n2,3")).toBe(6);
+  })
 });
