@@ -3,7 +3,11 @@ export class StringCalculator{
         if(numbers == "") return 0;
 
         if(!numbers.includes(",") && !numbers.startsWith("//")){
-            return parseInt(numbers)
+            const num = parseInt(numbers);
+            if (num < 0) {
+                throw new Error(`negatives not allowed: ${num}`);
+            }
+            return num;
         }
 
         let delimiter = ",", numbersStr = numbers
@@ -22,7 +26,7 @@ export class StringCalculator{
             throw new Error(`negatives not allowed: ${negativeNumbers.join(',')}`);
         }
         
-        let sum = numbersArray.reduce((accSum, currNumbers): number => accSum + currNumbers,0);
+        let sum = numbersArray.filter(num => num < 1000).reduce((accSum, currNumbers): number => accSum + currNumbers,0);
 
         return sum;
     }
