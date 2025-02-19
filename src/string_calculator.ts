@@ -1,14 +1,15 @@
 export class StringCalculator{
-    add(number: string): number {
-        if(number == "") return 0;
+    add(numbers: string): number {
+        if(numbers == "") return 0;
 
-        if(!number.includes(",")){
-            return parseInt(number)
+        if(!numbers.includes(",")){
+            return parseInt(numbers)
         }
 
-        let numberArray = number.split(',')
-        let sum = numberArray.reduce((accSum : number, currNumber: string): number=>{
-            accSum += parseInt(currNumber)
+        let normalizedNumbers = numbers.replace(/\n/g, ","); 
+        let numbersArray = normalizedNumbers.split(',')
+        let sum = numbersArray.reduce((accSum : number, currNumbers: string): number=>{
+            accSum += parseInt(currNumbers)
             return accSum
         },0);
 
