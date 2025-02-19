@@ -16,10 +16,10 @@ export class StringCalculator{
         
         let normalizedNumbers = numbersStr.replace(/\n/g, delimiter); 
         let numbersArray = normalizedNumbers.split(delimiter).map(num => parseInt(num))
-        const negativeNumber = numbersArray.find(num => num < 0)
+        const negativeNumbers = numbersArray.filter((n) => n < 0);
 
-        if(negativeNumber != undefined){
-            throw new Error(`negatives not allowed: ${negativeNumber}`);
+        if(negativeNumbers.length){
+            throw new Error(`negatives not allowed: ${negativeNumbers.join(',')}`);
         }
         
         let sum = numbersArray.reduce((accSum, currNumbers): number => accSum + currNumbers,0);
