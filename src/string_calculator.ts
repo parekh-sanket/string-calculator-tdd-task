@@ -14,11 +14,22 @@ export class StringCalculator{
 
         if(numbers.startsWith("//")){
             const firstNewLine = numbers.indexOf("\n");
-            delimiter = numbers.substring(2, firstNewLine);
-            if(delimiter.startsWith("[") && delimiter.endsWith("]")){
-                delimiter = delimiter.slice(1,-1)
+            let delimiterSection = numbers.substring(2, firstNewLine);
+            let delimiters = [","];
+
+            if (delimiterSection.includes("[")) {
+                delimiters = delimiterSection
+                    .split(/[\[\]]/)
+                    .filter((d) => d.length > 0);
+            } else {
+                delimiters = [delimiterSection];
             }
+            
             numbersStr = numbers.substring(firstNewLine + 1);
+
+            delimiters.forEach((d) => {
+                numbersStr = numbersStr.split(d).join(",");
+            });
         }
         
         let normalizedNumbers = numbersStr.replace(/\n/g, delimiter); 
