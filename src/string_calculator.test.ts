@@ -10,4 +10,8 @@ describe("String Calculator Testing", () => {
   it("should return 0 for empty string", () => {
     expect(calculator.add("")).toBe(0);
   });
+
+  it("should return number if only one number give in string" , ()=>{
+    expect(calculator.add("1")).toBe(1);
+  })
 });
