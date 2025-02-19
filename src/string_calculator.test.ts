@@ -14,4 +14,8 @@ describe("String Calculator Testing", () => {
   it("should return number if only one number give in string" , ()=>{
     expect(calculator.add("1")).toBe(1);
   })
+
+  it("should return sum of number when more then one number given in string" , ()=>{
+    expect(calculator.add("1,2")).toBe(3);
+  })
 });
